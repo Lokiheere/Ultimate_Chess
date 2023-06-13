@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Chess Piece Generator</title>
+  <style>
+    /* CSS styles for Goku theme */
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      color: #ffdb00;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    button {
+      background-color: #ffdb00;
+      color: #000;
+      font-size: 18px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .piece {
+      border: 2px solid #ffdb00;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    .piece-heading {
+      color: #ffdb00;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .piece-details {
+      margin-left: 20px;
+    }
+
+    .trait, .ability {
+      color: #ffdb00;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Chess Piece Generator</h1>
+
+  <button onclick="generatePieces()">Generate Chess Pieces</button>
+
+  <div id="pieces"></div>
+
+  <script>
+    const pieces = [
+      {
+        name: "Pawn",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      },
+      {
+        name: "Rook",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      },
+      {
+        name: "Knight",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      },
+      {
+        name: "Bishop",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      },
+      {
+        name: "Queen",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      },
+      {
+        name: "King",
+        traits: [
+          "Intimidation",
+          "UNAWARE",
+          "Copycat",
+          "Stealthy",
+          "Ghost",
+          "Infiltrater"
+        ],
+        abilities: [
+         "Aggressive",
+          "Fortify",
+          "Teleport",
+          "Double down",
+          "cursed",
+          "feather"
+        ],
+        effectsOnDeath: [
+         "Blast Radius",
+          "Unhandy",
+          "Revival",
+          "Resurrect",
+          "recall",
+          "Strip"
+        ]
+      }
+      // Add more chess piece classes as needed
+    ];
+
+    function generatePieces() {
+      const piecesDiv = document.getElementById("pieces");
+      piecesDiv.innerHTML = ""; // Clear previous pieces
+
+      pieces.forEach((piece) => {
+        const randomTrait = getRandomItem(piece.traits);
+        const randomAbility = getRandomItem(piece.abilities);
+        const randomEffect = getRandomItem(piece.effectsOnDeath);
+
+        const pieceHTML = `
+          <div class="piece">
+            <h2 class="piece-heading">${piece.name}</h2>
+            <div class="piece-details">
+              <p><span class="trait">Trait:</span> ${randomTrait} - ${getTraitExplanation(randomTrait)}</p>
+              <p><span class="trait">Ability:</span> ${randomAbility} - ${getAbilityExplanation(randomAbility)}</p>
+              <p><span class="trait">Effect on Death:</span> ${randomEffect} - ${getEffectExplanation(randomEffect)}</p>
+            </div>
+          </div>
+        `;
+
+        piecesDiv.innerHTML += pieceHTML;
+      });
+    }
+
+    function getRandomItem(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    // Function to get the explanation of a trait
+    function getTraitExplanation(trait) {
+      // Add explanations for each trait here
+      switch (trait) {
+        case "Intimidation":
+          return "all pieces being attacked by it cannot be moved";
+        case "UNAWARE":
+          return "Piece is unaffected by all traits and abilities and negates effects (except its own)";
+        case "Copycat":
+          return "Gain the abilities of the last piece you captured until then you get nothing.";
+        case "Stealthy":
+          return "When moved this piece can not be taken for one turn.";
+        case "Ghost":
+          return "Take the piece off the board until you choose to move it making it unable to be captured (effect still activate.)";
+        case "Infiltrater":
+          return "Instead of moving your own piece move a piece being attacked by your piece and negate effects.";
+        default:
+          return "";
+      }
+    }
+
+    // Function to get the explanation of an ability
+    function getAbilityExplanation(ability) {
+      // Add explanations for each ability here
+      switch (ability) {
+               case "Aggressive":
+          return "When you  capture with this piece move again (up to 3 times) (loses effect on check)";
+        case "Fortify":
+          return "When being captured choose 4 numbers, getting any of these numbers makes you invulnerable for the rest of the turn.";
+        case "Teleport":
+          return "Enables instant movement to an open square on the board.";
+        case "Double down":
+          return "Move twice with this piece (Two turn cooldown)";
+        case "cursed":
+          return "If you move this piece you can not move it for one turn";
+        case "feather":
+          return "When taken, the piece gets pushed in the direction it was taken from and takes the piece it hits";
+        case "":
+          return "";
+        default:
+          return "";
+      }
+    }
+
+    // Function to get the explanation of an effect on death
+    function getEffectExplanation(effect) {
+      // Add explanations for each effect on death here
+      switch (effect) {
+        case "Blast Radius":
+          return "When taken all pieces in the adjacent squares are also taken. (does not effect other blast radius pieces) ";
+        case "Unhandy":
+          return "The square this piece was taken on can no longer be moved to by opponent";
+        case "Revival":
+          return "Once on death this piece can move to a free square on your back rank (If there are none you can hold the Revival as long as you want.)";
+        case "Resurrect":
+          return "On death bring back a friendly piece that has already been captured";
+        case "recall":
+          return "On death capture the piece that captured you (King is exeption)";
+       case "Strip":
+          return "On capture the piece that captured turns into a normal piece (If piece has UNAWARE only the former is preserved)";
+        default:
+          return "";
+      }
+    }
+  </script>
+</body>
+</html>
